@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 
-import viewPackage.VistaPrincipal;
+import viewPackage.ViewAbmPlayers;
 import modelo.*;
 
 import javax.swing.ImageIcon;
@@ -34,9 +34,6 @@ public class Login {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public Login() {
 		initialize();
 	}

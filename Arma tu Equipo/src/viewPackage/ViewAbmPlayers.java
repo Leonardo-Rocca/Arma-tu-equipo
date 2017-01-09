@@ -25,7 +25,7 @@ import java.awt.Insets;
 import javax.swing.AbstractListModel;
 import java.lang.Package;
 
-public class VistaPrincipal {
+public class ViewAbmPlayers {
 
 	private JFrame frame;
 	private JTextField txtNombre;
@@ -45,7 +45,7 @@ public class VistaPrincipal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VistaPrincipal window = new VistaPrincipal();
+					ViewAbmPlayers window = new ViewAbmPlayers();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,7 +57,7 @@ public class VistaPrincipal {
 	/**
 	 * Create the application.
 	 */
-	public VistaPrincipal() {
+	public ViewAbmPlayers() {
 		initialize();
 	}
 
