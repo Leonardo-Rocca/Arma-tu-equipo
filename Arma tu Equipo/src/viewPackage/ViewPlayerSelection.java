@@ -19,6 +19,7 @@ public class ViewPlayerSelection {
 
 	private JFrame frame;
 
+	private boolean allSelected = false;
 	/**
 	 * Launch the application.
 	 */
@@ -54,8 +55,8 @@ public class ViewPlayerSelection {
 		CheckBoxList chkPlayers = new CheckBoxList();
 		ArrayList<Jugador> jugadoresTotales = modelo.main.cargarJugadoresFacu();
 		int tamanio = jugadoresTotales.size();
-		JCheckBox[] ch = new JCheckBox[tamanio];//   <--- modificar pa previsualizar
-		//JCheckBox[] ch ={ new JCheckBox("dsd")};
+	JCheckBox[] ch = new JCheckBox[tamanio];//   <--- modificar pa previsualizar
+	//	JCheckBox[] ch ={ new JCheckBox("dsd")};
 		
 		for(int i =0; i<tamanio;i++){
 			ch[i] = new JCheckBox(jugadoresTotales.get(i).toString());
@@ -90,6 +91,32 @@ public class ViewPlayerSelection {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.setBounds(35, 343, 129, 31);
 		frame.getContentPane().add(btnVolver);
+		
+		JButton btnSeleccionarTodos = new JButton("");
+		btnSeleccionarTodos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				selectAll(ch);
+			}
+
+			private void selectAll(JCheckBox[] ch) {
+				for(int i =0; i<ch.length;i++){
+					ch[i].setSelected(!allSelected);
+				}
+				chkPlayers.repaint();
+				allSelected=!allSelected;
+			}
+		});
+		btnSeleccionarTodos.setFont(new Font("Simplified Arabic Fixed", Font.PLAIN, 10));
+		btnSeleccionarTodos.setBounds(325, 227, 33, 31);
+		frame.getContentPane().add(btnSeleccionarTodos);
+		
+		JLabel lblSeleccionar = new JLabel("Seleccionar");
+		lblSeleccionar.setBounds(329, 164, 91, 31);
+		frame.getContentPane().add(lblSeleccionar);
+		
+		JLabel lblTodos = new JLabel("Todos");
+		lblTodos.setBounds(329, 194, 91, 21);
+		frame.getContentPane().add(lblTodos);
 
 	}
 

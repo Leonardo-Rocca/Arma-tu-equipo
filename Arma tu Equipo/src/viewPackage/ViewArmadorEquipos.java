@@ -191,7 +191,7 @@ public class ViewArmadorEquipos {
 	}
 
 	private void agregarJugadores(DefaultListModel<Jugador> listToAdd) {
-		int index = listaJugadores.getSelectedIndex(); //get selected index
+		int index = listaJugadores.getSelectedIndex(); 
 		    if (index == -1) { //no selection, so insert at beginning
 		        return;
 		    }	
@@ -203,7 +203,6 @@ public class ViewArmadorEquipos {
 	//lmodJugadoresTotales= lmod;
 	 for(int i = 0;i<lmod.size();i++){
 		 lmodJugadoresTotales.addElement(lmod.get(i));
-		 System.out.println(lmod.get(i).getName());
 		}
 	}
 }
