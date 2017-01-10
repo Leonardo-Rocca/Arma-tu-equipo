@@ -50,7 +50,8 @@ public class Login {
 		JButton btnNewButton = new JButton("Ingresar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			new	ViewArmadorEquipos().main(null);;
+			//new	ViewArmadorEquipos().main(null);;
+				new ViewMain().main(null);
 			}
 		});
 		btnNewButton.setBounds(136, 201, 288, 38);

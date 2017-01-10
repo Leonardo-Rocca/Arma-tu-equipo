@@ -14,8 +14,9 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
-public class ViewPlayerSelection {
+public class ViewPlayerSelection extends GenericForm{
 
 	private JFrame frame;
 
@@ -55,8 +56,8 @@ public class ViewPlayerSelection {
 		CheckBoxList chkPlayers = new CheckBoxList();
 		ArrayList<Jugador> jugadoresTotales = modelo.main.cargarJugadoresFacu();
 		int tamanio = jugadoresTotales.size();
-	JCheckBox[] ch = new JCheckBox[tamanio];//   <--- modificar pa previsualizar
-	//	JCheckBox[] ch ={ new JCheckBox("dsd")};
+	    JCheckBox[] ch = new JCheckBox[tamanio];//   <--- modificar pa previsualizar
+		//JCheckBox[] ch ={ new JCheckBox("dsd")};
 		
 		for(int i =0; i<tamanio;i++){
 			ch[i] = new JCheckBox(jugadoresTotales.get(i).toString());
@@ -89,10 +90,17 @@ public class ViewPlayerSelection {
 		frame.getContentPane().add(btnComenzar);
 		
 		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				generarEquipo();
+			}
+
+		});
 		btnVolver.setBounds(35, 343, 129, 31);
 		frame.getContentPane().add(btnVolver);
 		
 		JButton btnSeleccionarTodos = new JButton("");
+		btnSeleccionarTodos.setIcon(new ImageIcon("tick2.jpg"));
 		btnSeleccionarTodos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				selectAll(ch);
@@ -107,7 +115,7 @@ public class ViewPlayerSelection {
 			}
 		});
 		btnSeleccionarTodos.setFont(new Font("Simplified Arabic Fixed", Font.PLAIN, 10));
-		btnSeleccionarTodos.setBounds(325, 227, 33, 31);
+		btnSeleccionarTodos.setBounds(329, 217, 39, 38);
 		frame.getContentPane().add(btnSeleccionarTodos);
 		
 		JLabel lblSeleccionar = new JLabel("Seleccionar");
@@ -118,6 +126,10 @@ public class ViewPlayerSelection {
 		lblTodos.setBounds(329, 194, 91, 21);
 		frame.getContentPane().add(lblTodos);
 
+	}
+
+	public void generarEquipo() {
+		this.getFormAnterior();
 	}
 
 }
