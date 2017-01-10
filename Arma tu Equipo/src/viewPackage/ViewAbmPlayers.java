@@ -24,8 +24,9 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.AbstractListModel;
 import java.lang.Package;
+import java.lang.reflect.GenericSignatureFormatError;
 
-public class ViewAbmPlayers {
+public class ViewAbmPlayers extends GenericForm {
 
 	private JFrame frame;
 	private JTextField txtNombre;

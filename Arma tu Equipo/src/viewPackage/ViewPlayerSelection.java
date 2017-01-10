@@ -42,6 +42,7 @@ public class ViewPlayerSelection extends GenericForm{
 	 */
 	public ViewPlayerSelection() {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
@@ -57,7 +58,7 @@ public class ViewPlayerSelection extends GenericForm{
 		ArrayList<Jugador> jugadoresTotales = modelo.main.cargarJugadoresFacu();
 		int tamanio = jugadoresTotales.size();
 	    JCheckBox[] ch = new JCheckBox[tamanio];//   <--- modificar pa previsualizar
-		//JCheckBox[] ch ={ new JCheckBox("dsd")};
+	//	JCheckBox[] ch ={ new JCheckBox("dsd")};
 		
 		for(int i =0; i<tamanio;i++){
 			ch[i] = new JCheckBox(jugadoresTotales.get(i).toString());
@@ -77,6 +78,7 @@ public class ViewPlayerSelection extends GenericForm{
 		btnComenzar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ViewArmadorEquipos armador = new	ViewArmadorEquipos(defaultListJugadores());
+			//	wrapSetForm(armador);
 			}
 			private DefaultListModel<Jugador> defaultListJugadores() {
 				DefaultListModel<Jugador> participantes = new DefaultListModel<Jugador>();
@@ -130,6 +132,10 @@ public class ViewPlayerSelection extends GenericForm{
 
 	public void generarEquipo() {
 		this.getFormAnterior();
+	}
+
+	private void wrapSetForm(ViewArmadorEquipos armador) {
+		armador.setFormAnterior(this.getFormAnterior());
 	}
 
 }

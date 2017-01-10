@@ -49,6 +49,11 @@ public class ViewMain extends GenericForm{
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnCargarJugadores = new JButton("Cargar Jugadores");
+		btnCargarJugadores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				loadPlayers();
+			}
+		});
 		btnCargarJugadores.setFont(new Font("Stencil", Font.PLAIN, 13));
 		btnCargarJugadores.setBounds(83, 54, 228, 78);
 		frame.getContentPane().add(btnCargarJugadores);
@@ -67,6 +72,17 @@ public class ViewMain extends GenericForm{
 	public void generarEquipo() {
 		ViewPlayerSelection view = new ViewPlayerSelection();
 		view.setFormAnterior((GenericForm)this);
+		
+	}
+
+	private void loadPlayers() {
+		ViewAbmPlayers view = new ViewAbmPlayers();
+		view.setFormAnterior((GenericForm)this);
 		view.main(null);
 	}
+	/*private <T> void irA(Class<T> v) {
+		T myView = v.newInstance();
+		((GenericForm) myView).setFormAnterior((GenericForm)this);
+		(GenericForm) myView).main(null);
+	}*/
 }

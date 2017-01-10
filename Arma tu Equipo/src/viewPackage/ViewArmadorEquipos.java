@@ -28,8 +28,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
-public class ViewArmadorEquipos {
+public class ViewArmadorEquipos extends GenericForm{
 
 	
 	public DefaultListModel<Jugador> lmodJugadoresTotales = new DefaultListModel();
@@ -66,6 +67,7 @@ public class ViewArmadorEquipos {
 	 */
 	public ViewArmadorEquipos() {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	public ViewArmadorEquipos(DefaultListModel<Jugador> lmod) {
@@ -177,6 +179,11 @@ public class ViewArmadorEquipos {
 
 		lbHablility2.setBounds(396, 338, 46, 14);
 		frame.getContentPane().add(lbHablility2);
+		
+		JButton button = new JButton("");
+		button.setIcon(new ImageIcon("back.png"));
+		button.setBounds(10, 392, 73, 53);
+		frame.getContentPane().add(button);
 		
 	//	modelo.main.cargarJugadoresFacu().forEach(j ->lmodJugadoresTotales.addElement(j));
 		
