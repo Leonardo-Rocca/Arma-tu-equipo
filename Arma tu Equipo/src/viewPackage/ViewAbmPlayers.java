@@ -1,5 +1,7 @@
 package viewPackage;
 import modelo.*;
+import persistencia.FileSystem;
+
 import java.awt.EventQueue;
 
 
@@ -14,6 +16,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
@@ -39,9 +43,8 @@ public class ViewAbmPlayers extends GenericForm {
 	private JList list = new JList(lmod);  //<-aca está el tema
 	
 	private ArrayList<Jugador> jugadores =	new ArrayList<Jugador>();
-	/**
-	 * Launch the application.
-	 */
+
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -60,6 +63,7 @@ public class ViewAbmPlayers extends GenericForm {
 	 */
 	public ViewAbmPlayers() {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
@@ -67,24 +71,9 @@ public class ViewAbmPlayers extends GenericForm {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 422, 354);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-	     lmod.addElement(new Jugador("Leo",9));
-	     
 
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-//		ArrayList<Jugador> jugadores =	new ArrayList<Jugador>();
-		
-		//JList 
 		list = new JList(lmod);
 		list.setVisibleRowCount(5);
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -92,40 +81,11 @@ public class ViewAbmPlayers extends GenericForm {
 	
 		
 		JButton btnAgregar = new JButton("Agregar");
-		btnAgregar.setBounds(300, 47, 124, 42);
+		btnAgregar.setBounds(292, 45, 115, 40);
 		btnAgregar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
-				String name = txtNombre.getText();
-				String hability = txtHabilidad.getText();
-				
-				  if (name.equals("") || hability.equals("") ) {
-				      
-					  txtNombre.requestFocusInWindow();
-					  txtNombre.selectAll();
-				        return;
-				    }
-				  int index = list.getSelectedIndex(); //get selected index
-				    if (index == -1) { //no selection, so insert at beginning
-				        index = 0;
-				    } else {           //add after the selected item
-				        index++;
-				    }
-				  
-				//jugadores.add(new Jugador(txtNombre.getText(), Integer.parseInt(txtHabilidad.getText())));
-			
-				lmod.insertElementAt(new Jugador(txtNombre.getText(), Integer.parseInt(txtHabilidad.getText())), index);
-			
-			//	lmod.addElement(new Jugador(txtNombre.getText(), Integer.parseInt(txtHabilidad.getText())));
-			//	list = new JList<Jugador>(lmod);
-				
-			    //Reset the text field.
-				txtNombre.requestFocusInWindow();
-				txtNombre.setText("");
-
-			    //Select the new item and make it visible.
-			    list.setSelectedIndex(index);
-			    list.ensureIndexIsVisible(index);
+				agregar();
 				
 			}
 		});
@@ -139,32 +99,92 @@ public class ViewAbmPlayers extends GenericForm {
 		
 		txtNombre = new JTextField();
 		txtNombre.setBounds(10, 53, 94, 25);
-		txtNombre.setText("Nombre");
 		frame.getContentPane().add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		//JList list = new JList();
-		list.setBounds(95, 119, 227, 95);
+		list.setBounds(75, 118, 215, 130);
 		frame.getContentPane().add(list);
 		frame.getContentPane().add(btnAgregar);
 		
 		txtHabilidad = new JTextField();
 		txtHabilidad.setBounds(147, 53, 59, 25);
-		txtHabilidad.setText("5");
 		frame.getContentPane().add(txtHabilidad);
 		txtHabilidad.setColumns(10);
-		lblHabilidad.setBounds(154, 23, 136, 31);
+		lblHabilidad.setBounds(154, 23, 78, 31);
 		frame.getContentPane().add(lblHabilidad);
 		
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ViewArmadorEquipos armador = new	ViewArmadorEquipos(lmod);
-			//	armador.main(null);
-			//	armador.setParticipantes(lmod);
+				persistir();
+				regresar();
 			}
 		});
-		btnOk.setBounds(313, 225, 94, 26);
+		btnOk.setBounds(289, 266, 94, 26);
 		frame.getContentPane().add(btnOk);
+		
+		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre.setBounds(21, 23, 136, 31);
+		frame.getContentPane().add(lblNombre);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				regresar();
+			}
+		});
+		btnCancelar.setBounds(33, 268, 94, 26);
+		frame.getContentPane().add(btnCancelar);
+		
+		this.setParticipantes(new FileSystem().getListPlayers());
+	}
+
+	protected void persistir() {
+		new FileSystem().persistListPlayers(lmod);	
+	}
+
+	private void setParticipantes(ArrayList<Jugador> listPlayers) {
+			 for(int i = 0;i<listPlayers.size();i++){
+				 lmod.addElement(listPlayers.get(i));
+				}
+			}
+
+	public void agregar() {
+		String name = txtNombre.getText();
+		String hability = txtHabilidad.getText();
+		
+		  if (name.equals("") || hability.equals("") ) {
+		      
+			  txtNombre.requestFocusInWindow();
+			  txtNombre.selectAll();
+		        return;
+		    }
+
+		    try
+		    {
+		        int actualValue = Integer.parseInt(txtHabilidad.getText());
+
+		    }
+		    catch (NumberFormatException e)
+		    {
+		    	  JOptionPane.showMessageDialog(new JPanel(), "Debe ingresar un Número Entero", "Error", JOptionPane.ERROR_MESSAGE);
+				  txtHabilidad.requestFocusInWindow();
+				  txtHabilidad.setText("");
+		        return;
+		    }
+	lmod.addElement(new Jugador(txtNombre.getText(), Integer.parseInt(hability)));
+		
+		//Reset the text field.
+		txtNombre.requestFocusInWindow();
+		txtNombre.setText("");
+		txtHabilidad.setText("");
+	}
+
+	public void regresar() {
+		//ViewArmadorEquipos armador = new	ViewArmadorEquipos(lmod);
+		ViewMain f = (ViewMain) getFormAnterior();
+		f.iniciar();
+		this.frame.dispose();
 	}
 }

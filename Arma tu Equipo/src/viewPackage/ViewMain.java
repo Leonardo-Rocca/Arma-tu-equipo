@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class ViewMain extends GenericForm{
 
@@ -30,10 +31,10 @@ public class ViewMain extends GenericForm{
 			}
 		});
 	}
-
-	/**
-	 * Create the application.
-	 */
+	
+	public void iniciar() {
+		frame.setVisible(true);
+	}
 	public ViewMain() {
 		initialize();
 	}
@@ -67,18 +68,25 @@ public class ViewMain extends GenericForm{
 		btnGenerarEquipo.setFont(new Font("Stencil", Font.PLAIN, 13));
 		btnGenerarEquipo.setBounds(83, 169, 228, 78);
 		frame.getContentPane().add(btnGenerarEquipo);
+		
+		JButton btnSetUp = new JButton("");
+		btnSetUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSetUp.setIcon(new ImageIcon("setup.jpg"));
+		btnSetUp.setBounds(110, 270, 42, 39);
+		frame.getContentPane().add(btnSetUp);
 	}
 
 	public void generarEquipo() {
 		ViewPlayerSelection view = new ViewPlayerSelection();
 		view.setFormAnterior((GenericForm)this);
-		
 	}
 
 	private void loadPlayers() {
 		ViewAbmPlayers view = new ViewAbmPlayers();
 		view.setFormAnterior((GenericForm)this);
-		view.main(null);
 	}
 	/*private <T> void irA(Class<T> v) {
 		T myView = v.newInstance();

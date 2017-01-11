@@ -1,6 +1,8 @@
 package modelo;
 
-public class Jugador{
+import java.io.Serializable;
+
+public class Jugador implements Serializable {
 
 	private String name;
 	private int hability;

@@ -9,6 +9,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 
 import modelo.Jugador;
+import persistencia.FileSystem;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -55,7 +57,8 @@ public class ViewPlayerSelection extends GenericForm{
 		frame.getContentPane().setLayout(null);
 		
 		CheckBoxList chkPlayers = new CheckBoxList();
-		ArrayList<Jugador> jugadoresTotales = modelo.main.cargarJugadoresFacu();
+		ArrayList<Jugador> jugadoresTotales =  new FileSystem().getListPlayers();//modelo.main.cargarJugadoresFacu();
+
 		int tamanio = jugadoresTotales.size();
 	    JCheckBox[] ch = new JCheckBox[tamanio];//   <--- modificar pa previsualizar
 	//	JCheckBox[] ch ={ new JCheckBox("dsd")};
@@ -94,7 +97,7 @@ public class ViewPlayerSelection extends GenericForm{
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				generarEquipo();
+				volver();
 			}
 
 		});
@@ -128,6 +131,12 @@ public class ViewPlayerSelection extends GenericForm{
 		lblTodos.setBounds(329, 194, 91, 21);
 		frame.getContentPane().add(lblTodos);
 
+	}
+
+	protected void volver() {
+		ViewMain m = (ViewMain) this.getFormAnterior();
+		m.iniciar();
+		this.frame.dispose();
 	}
 
 	public void generarEquipo() {

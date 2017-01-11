@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import persistencia.FileSystem;
+
 public class main {
 
 	static Jugador leo = new Jugador("Leo",7);
@@ -12,7 +14,7 @@ public class main {
 	static Jugador edu = new Jugador("Edu",7);
 	static Jugador juanjo = new Jugador("Juanjo",10);
 	
-	public static void main(String[] args) {
+	public static void main2(String[] args) {
 		ArmadorEquipos armador = new ArmadorEquipos();
 		ArrayList<Jugador> jugadores = cargarJugadores3();
 		ArrayList<Jugador> elTridente = cargarJugadoresTridente();
@@ -27,7 +29,13 @@ public class main {
 	ArrayList<Match> m3 = armador.armarEquipoConJugadores(jugadores,elTridente);
 	m2.get(0).imprimirEquipos();
 	}
-
+	public static void main(String[] args) {
+		FileSystem fs = new FileSystem();
+		fs.persistListPlayers(cargarJugadoresTridente());
+	//	fs.persistPlayer(facu);
+		fs.getListPlayers();
+		
+	}
 
 	private static ArrayList<Jugador> cargarJugadoresTeamCris() {
 		ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
