@@ -7,15 +7,21 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import modelo.Jugador;
 import persistencia.FileSystem;
 
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
 
 public class ViewPlayerSelection extends GenericForm{
@@ -80,8 +86,11 @@ public class ViewPlayerSelection extends GenericForm{
 		JButton btnComenzar = new JButton("Comenzar");
 		btnComenzar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(defaultListJugadores().isEmpty()){  
+					JOptionPane.showMessageDialog(new JPanel(), "Debe seleccionar algún jugador", "Error", JOptionPane.ERROR_MESSAGE);
+				return;};
 				ViewArmadorEquipos armador = new	ViewArmadorEquipos(defaultListJugadores());
-			//	wrapSetForm(armador);
+				wrapSetForm(armador);
 			}
 			private DefaultListModel<Jugador> defaultListJugadores() {
 				DefaultListModel<Jugador> participantes = new DefaultListModel<Jugador>();
@@ -145,6 +154,7 @@ public class ViewPlayerSelection extends GenericForm{
 
 	private void wrapSetForm(ViewArmadorEquipos armador) {
 		armador.setFormAnterior(this.getFormAnterior());
+		this.frame.dispose();
 	}
 
 }

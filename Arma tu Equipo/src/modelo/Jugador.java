@@ -28,6 +28,7 @@ public class Jugador implements Serializable {
 		this.name = name;
 	}
 	 public String toString() {
+		 if(hability==0)return "";
 	      return name + " - " + String.valueOf(this.getHability());
 	    }
 

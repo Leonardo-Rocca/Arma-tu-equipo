@@ -74,7 +74,7 @@ public class ViewMain extends GenericForm{
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnSetUp.setIcon(new ImageIcon("setup.jpg"));
+		btnSetUp.setIcon(new ImageIcon("setUpIcon40.png"));
 		btnSetUp.setBounds(110, 270, 42, 39);
 		frame.getContentPane().add(btnSetUp);
 	}

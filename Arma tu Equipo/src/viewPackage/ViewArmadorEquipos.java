@@ -181,12 +181,24 @@ public class ViewArmadorEquipos extends GenericForm{
 		frame.getContentPane().add(lbHablility2);
 		
 		JButton button = new JButton("");
-		button.setIcon(new ImageIcon("back.png"));
-		button.setBounds(10, 392, 73, 53);
+		button.setIcon(new ImageIcon("backIcon35.png"));
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				volver();
+			}
+		});
+	//	button.setIcon(new ImageIcon(ViewArmadorEquipos.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
+		button.setBounds(23, 401, 60, 44);
 		frame.getContentPane().add(button);
 		
 	//	modelo.main.cargarJugadoresFacu().forEach(j ->lmodJugadoresTotales.addElement(j));
 		
+	}
+
+	protected void volver() {
+		ViewMain v= (ViewMain) this.getFormAnterior();
+		v.iniciar();
+		this.frame.dispose();
 	}
 
 	private ArrayList<Jugador> toListJugador(DefaultListModel<Jugador> jugadores) {

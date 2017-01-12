@@ -9,9 +9,11 @@ public class ArmadorEquipos {
 	
 	
 public	ArrayList<Match> armarEquipo(ArrayList<Jugador> jugadores){
-	if(jugadores.size()==9){
+	int sobrantes = 10-jugadores.size();
+	for(int i =0;i<Math.abs(sobrantes);i++){
 		jugadores.add(new Jugador("...", 0));
 	}
+	
 	ArrayList<String> combS = CombinatoriaNumeros.devolverCombinatoriaString();
 	ArrayList<Equipo> es1 = armarCombinacionesEquiposString(jugadores,combS);
 	
