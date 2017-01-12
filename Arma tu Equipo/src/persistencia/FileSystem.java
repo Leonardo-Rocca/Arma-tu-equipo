@@ -12,16 +12,15 @@ import modelo.Jugador;
 
 public class FileSystem {
 	public static void main(String args[]) {
-   //     persistPlayer();
-        // Deserialización de objeto
         getPlayer();
     }
 
+		
 	public static void getPlayer() {
 		try {
             Jugador object2;
             //abre el archivo
-            FileInputStream fis = new FileInputStream("persisted-object.file");
+            FileInputStream fis = new FileInputStream(getFileRoute());
             ObjectInputStream ois = new ObjectInputStream(fis);
             //lee el objeto del archivo
             object2 = (Jugador) ois.readObject();
@@ -33,6 +32,12 @@ public class FileSystem {
             System.exit(0);
         }
 	}
+
+	private static String getFileRoute() {
+		//"persisted-object.file"
+		return new PersistidorGrups().getFilePointed();
+	}
+
 
 	public static void persistPlayer(Jugador object1) {
 		// Serialización de Objeto 
@@ -55,10 +60,8 @@ public class FileSystem {
     	public static void persistListPlayers(ArrayList<Jugador> object1) {
     		// Serialización de Objeto 
             try {
-                //crea el objecto e imprime sus valores por consola
-                System.out.println("object1: " + object1);
                 //crea un fichero para persistir el objeto
-                FileOutputStream fos = new FileOutputStream("persisted-object.file");
+                FileOutputStream fos = new FileOutputStream(getFileRoute());
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 //escribe el objeto serializado a un archivo
                 oos.writeObject(object1);
@@ -73,15 +76,11 @@ public class FileSystem {
 		public ArrayList<Jugador> getListPlayers() {
             ArrayList<Jugador> object2 = new  ArrayList<Jugador>();
 			try {
-
-	            //abre el archivo
-	            FileInputStream fis = new FileInputStream("persisted-object.file");
+	            FileInputStream fis = new FileInputStream(getFileRoute());
 	            ObjectInputStream ois = new ObjectInputStream(fis);
 	            //lee el objeto del archivo
 	            object2 = (ArrayList<Jugador>) ois.readObject();
 	            ois.close();
-	            //imprime los valores del objeto persistido
-	            System.out.println("object2: " + object2);   
 	        } catch (Exception e) {
 	            System.out.println("Exception during deserialization: " + e);
 	            System.exit(0);

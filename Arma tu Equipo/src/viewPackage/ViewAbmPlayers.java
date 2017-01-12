@@ -29,6 +29,9 @@ import java.awt.Insets;
 import javax.swing.AbstractListModel;
 import java.lang.Package;
 import java.lang.reflect.GenericSignatureFormatError;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Font;
 
 public class ViewAbmPlayers extends GenericForm {
 
@@ -75,6 +78,18 @@ public class ViewAbmPlayers extends GenericForm {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		list = new JList(lmod);
+		list.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				int index = list.getSelectedIndex();
+				Jugador j = lmod.getElementAt(index);
+				txtNombre.setText(j.getName());
+				txtHabilidad.setText(String.valueOf(j.getHability()));
+				txtHabilidad.requestFocusInWindow();
+				txtHabilidad.selectAll();
+				lmod.remove(index);
+			}
+		});
 		list.setVisibleRowCount(5);
 		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		list.setLayoutOrientation(JList.VERTICAL_WRAP);
@@ -136,6 +151,11 @@ public class ViewAbmPlayers extends GenericForm {
 		});
 		btnCancelar.setBounds(33, 268, 94, 26);
 		frame.getContentPane().add(btnCancelar);
+		
+		JLabel lblSeleccioneJugadorPara = new JLabel("Seleccione jugador para modificar/eliminar");
+		lblSeleccioneJugadorPara.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblSeleccioneJugadorPara.setBounds(20, 92, 251, 31);
+		frame.getContentPane().add(lblSeleccioneJugadorPara);
 		
 		this.setParticipantes(new FileSystem().getListPlayers());
 	}

@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import persistencia.FileSystem;
+import persistencia.PersistidorGrups;
 
 public class main {
 
@@ -31,9 +32,9 @@ public class main {
 	}
 	public static void main(String[] args) {
 		FileSystem fs = new FileSystem();
-		fs.persistListPlayers(cargarJugadoresTridente());
-	//	fs.persistPlayer(facu);
-		fs.getListPlayers();
+		ArrayList<String> s = new ArrayList<String>();
+		s.add("persisted-object.file");
+		new PersistidorGrups().inicializar();//.persistGroups(s);
 		
 	}
 

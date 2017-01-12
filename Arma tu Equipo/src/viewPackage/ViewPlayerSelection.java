@@ -114,7 +114,7 @@ public class ViewPlayerSelection extends GenericForm{
 		frame.getContentPane().add(btnVolver);
 		
 		JButton btnSeleccionarTodos = new JButton("");
-		btnSeleccionarTodos.setIcon(new ImageIcon("tick2.jpg"));
+		btnSeleccionarTodos.setIcon(new ImageIcon("checkIcon35.png"));
 		btnSeleccionarTodos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				selectAll(ch);

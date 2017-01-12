@@ -72,11 +72,18 @@ public class ViewMain extends GenericForm{
 		JButton btnSetUp = new JButton("");
 		btnSetUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				irAConfiguracion();
 			}
 		});
 		btnSetUp.setIcon(new ImageIcon("setUpIcon40.png"));
 		btnSetUp.setBounds(110, 270, 42, 39);
 		frame.getContentPane().add(btnSetUp);
+	}
+
+	protected void irAConfiguracion() {
+		Configuracion view = new Configuracion();
+		view.setFormAnterior((GenericForm)this);
+		this.frame.setVisible(false);
 	}
 
 	public void generarEquipo() {
@@ -93,4 +100,8 @@ public class ViewMain extends GenericForm{
 		((GenericForm) myView).setFormAnterior((GenericForm)this);
 		(GenericForm) myView).main(null);
 	}*/
+
+	public void visible() {
+		frame.setVisible(true);
+	}
 }
