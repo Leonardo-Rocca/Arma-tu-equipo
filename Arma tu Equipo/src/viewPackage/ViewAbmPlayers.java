@@ -32,6 +32,8 @@ import java.lang.reflect.GenericSignatureFormatError;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ViewAbmPlayers extends GenericForm {
 
@@ -123,6 +125,14 @@ public class ViewAbmPlayers extends GenericForm {
 		frame.getContentPane().add(btnAgregar);
 		
 		txtHabilidad = new JTextField();
+		txtHabilidad.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				 if(arg0.getKeyCode() == KeyEvent.VK_ENTER) {
+				     agregar();
+				   }
+			}
+		});
 		txtHabilidad.setBounds(147, 53, 59, 25);
 		frame.getContentPane().add(txtHabilidad);
 		txtHabilidad.setColumns(10);

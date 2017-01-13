@@ -75,7 +75,7 @@ public class PersistidorGrups {
 	            FileOutputStream fos = new FileOutputStream(string+".file");
 	            ObjectOutputStream oos = new ObjectOutputStream(fos);
 	            ArrayList<Jugador> ldammy = new ArrayList<Jugador>();
-	            ldammy.add(new Jugador("---", 0));
+	      //      ldammy.add(new Jugador("---", 0));
 	            oos.writeObject(ldammy);
 	            oos.flush(); oos.close();
 	        } catch (Exception e) {

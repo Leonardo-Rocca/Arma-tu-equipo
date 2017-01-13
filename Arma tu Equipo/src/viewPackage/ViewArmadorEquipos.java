@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ViewArmadorEquipos extends GenericForm{
 
@@ -46,6 +48,9 @@ public class ViewArmadorEquipos extends GenericForm{
 	private JLabel lbHablility1 = new JLabel("0");		
 	private JLabel lbHablility2 = new JLabel("0");
 
+	private JList listE1 ;
+
+	private JList listE2;
 	/**
 	 * Launch the application.
 	 */
@@ -82,37 +87,51 @@ public class ViewArmadorEquipos extends GenericForm{
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 503, 484);
+		frame.setBounds(100, 100, 460, 488);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		listaJugadores = new JList(lmodJugadoresTotales);  
 		listaJugadores.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		listaJugadores.setBounds(72, 32, 345, 53);
+		listaJugadores.setBounds(38, 38, 370, 53);
 		frame.getContentPane().add(listaJugadores);
 		listaJugadores.setVisibleRowCount(2);
 		
-		JList listE1 = new JList(jugadoresEq1lmod);
-		listE1.setBounds(57, 194, 143, 133);
+		 listE1 = new JList(jugadoresEq1lmod);
+		listE1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				devolverJugador(listE1,jugadoresEq1lmod,lbHablility1);
+				
+			}
+		});
+		listE1.setBounds(23, 200, 143, 133);
 		frame.getContentPane().add(listE1);
 		
-		JList listE2 = new JList(jugadoresEq2lmod);
-		listE2.setBounds(321, 194, 134, 133);
+		listE2 = new JList(jugadoresEq2lmod);
+		listE2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				devolverJugador(listE2,jugadoresEq2lmod,lbHablility2);
+			}
+		});
+		listE2.setBounds(287, 200, 134, 133);
 		frame.getContentPane().add(listE2);
 		
 		JLabel lblEquipo = new JLabel("Equipo 1");
 		lblEquipo.setFont(new Font("Viner Hand ITC", Font.BOLD, 19));
-		lblEquipo.setBounds(74, 158, 92, 26);
+		lblEquipo.setBounds(40, 164, 92, 26);
 		frame.getContentPane().add(lblEquipo);
 		
 		JLabel lblEquipo_2 = new JLabel("Equipo 2");
 		lblEquipo_2.setFont(new Font("Viner Hand ITC", Font.BOLD, 19));
-		lblEquipo_2.setBounds(354, 158, 92, 26);
+		lblEquipo_2.setBounds(320, 164, 92, 26);
 		frame.getContentPane().add(lblEquipo_2);
 		
 		JLabel lblJugadores = new JLabel("Jugadores");
 		lblJugadores.setFont(new Font("Viner Hand ITC", Font.BOLD, 19));
-		lblJugadores.setBounds(222, 5, 92, 26);
+		lblJugadores.setBounds(188, 11, 92, 26);
 		frame.getContentPane().add(lblJugadores);
 		
 		JButton btnGenerarEquipos = new JButton("Generar Equipos");
@@ -149,7 +168,7 @@ public class ViewArmadorEquipos extends GenericForm{
 				lbHablility2.setText(String.valueOf(match.getHability(2)));
 			}
 		});
-		btnGenerarEquipos.setBounds(186, 367, 143, 36);
+		btnGenerarEquipos.setBounds(152, 373, 143, 36);
 		frame.getContentPane().add(btnGenerarEquipos);
 		
 		//Agregar E1
@@ -157,27 +176,27 @@ public class ViewArmadorEquipos extends GenericForm{
 		btnAgregarE1.addActionListener(new ActionListener() {
 		
 			public void actionPerformed(ActionEvent arg0) {
-				  agregarJugadores(jugadoresEq1lmod);
+				  agregarJugadores(jugadoresEq1lmod,lbHablility1);
 			}
 		});
-		btnAgregarE1.setBounds(72, 119, 89, 23);
+		btnAgregarE1.setBounds(71, 125, 89, 23);
 		frame.getContentPane().add(btnAgregarE1);
 		
 		JButton btnAgregarE2 = new JButton("Agregar");
 		btnAgregarE2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				 agregarJugadores(jugadoresEq2lmod);
+				 agregarJugadores(jugadoresEq2lmod, lbHablility2);
 			}
 		});
-		btnAgregarE2.setBounds(354, 119, 89, 23);
+		btnAgregarE2.setBounds(298, 125, 89, 23);
 		frame.getContentPane().add(btnAgregarE2);
 		
 
-		lbHablility1.setBounds(114, 338, 46, 14);
+		lbHablility1.setBounds(71, 344, 46, 14);
 		frame.getContentPane().add(lbHablility1);
 		
 
-		lbHablility2.setBounds(396, 338, 46, 14);
+		lbHablility2.setBounds(353, 344, 46, 14);
 		frame.getContentPane().add(lbHablility2);
 		
 		JButton button = new JButton("");
@@ -187,13 +206,28 @@ public class ViewArmadorEquipos extends GenericForm{
 				volver();
 			}
 		});
-	//	button.setIcon(new ImageIcon(ViewArmadorEquipos.class.getResource("/com/sun/javafx/scene/web/skin/Undo_16x16_JFX.png")));
 		button.setBounds(23, 401, 60, 44);
 		frame.getContentPane().add(button);
+		
+		JButton btnRedo = new JButton("");
+		btnRedo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				devolverTodos();
+			}
+		});
+		btnRedo.setIcon(new ImageIcon("redoIcon30.png"));
+		btnRedo.setBounds(198, 229, 46, 44);
+		frame.getContentPane().add(btnRedo);
+		
+		JLabel lbBall = new JLabel("");
+		lbBall.setIcon(new ImageIcon("soccer_ball50.png"));
+		lbBall.setBounds(198, 148, 46, 42);
+		frame.getContentPane().add(lbBall);
 		
 	//	modelo.main.cargarJugadoresFacu().forEach(j ->lmodJugadoresTotales.addElement(j));
 		
 	}
+
 
 	protected void volver() {
 		ViewMain v= (ViewMain) this.getFormAnterior();
@@ -209,13 +243,15 @@ public class ViewArmadorEquipos extends GenericForm{
 		return participantes;
 	}
 
-	private void agregarJugadores(DefaultListModel<Jugador> listToAdd) {
+	private void agregarJugadores(DefaultListModel<Jugador> listToAdd, JLabel lbHablility) {
 		int index = listaJugadores.getSelectedIndex(); 
 		    if (index == -1) { //no selection, so insert at beginning
 		        return;
 		    }	
+		 Jugador j = lmodJugadoresTotales.getElementAt(index);
 		listToAdd.addElement((Jugador)listaJugadores.getSelectedValue());
-		lmodJugadoresTotales.remove(index);//(listaJugadores.getSelectedValue());
+		lmodJugadoresTotales.remove(index);
+		lbHablility.setText(String.valueOf(Integer.parseInt(lbHablility.getText())+j.getHability()));
 	}
 
 	public void setParticipantes(DefaultListModel<Jugador> lmod) {
@@ -224,4 +260,25 @@ public class ViewArmadorEquipos extends GenericForm{
 		 lmodJugadoresTotales.addElement(lmod.get(i));
 		}
 	}
+
+	public void devolverJugador(JList list, DefaultListModel<Jugador> lmod, JLabel lbHablility) {
+		int index = list.getSelectedIndex();
+		if(index==-1)index=0;
+		Jugador j = lmod.getElementAt(index);
+		lbHablility.setText(String.valueOf(Integer.parseInt(lbHablility.getText())-j.getHability()));
+		lmodJugadoresTotales.addElement(j);
+		lmod.remove(index);
+	}
+	protected void devolverTodos() {
+		int size1 = jugadoresEq1lmod.size();
+		for(int i = 0; i<size1;i++){
+			devolverJugador(listE1, jugadoresEq1lmod, lbHablility1);
+		}
+		int size2 = jugadoresEq2lmod.size();
+		for(int i = 0; i<size2;i++){
+			devolverJugador(listE2, jugadoresEq2lmod, lbHablility2);
+		}
+		
+	}
+
 }

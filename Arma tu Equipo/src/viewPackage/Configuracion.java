@@ -12,6 +12,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -116,7 +118,7 @@ public class Configuracion extends GenericForm{
 		lblGrupoActual.setText(lblGrupoActual.getText() + persistidor.getFilePointed());
 		
 		lblIngreseNombreDe = new JLabel("Ingrese nombre de grupo(sin espacios)");
-		lblIngreseNombreDe.setBounds(34, 131, 208, 20);
+		lblIngreseNombreDe.setBounds(34, 131, 341, 20);
 		frame.getContentPane().add(lblIngreseNombreDe);
 	}
 
@@ -126,6 +128,7 @@ public class Configuracion extends GenericForm{
 	}
 
 	protected void eliminar() {
+		if(cmod.getSize()==1)return;
 		int i = comboBox.getSelectedIndex();
 		cmod.removeElementAt(i);
 		persistidor.persistGroups(this.toListString(cmod));
@@ -146,10 +149,17 @@ public class Configuracion extends GenericForm{
 
 	public void crearGrupo() {
 		if(txtNewGroup.equals("")) return;
-		cmod.addElement(txtNewGroup.getText()+".file");
-		persistidor.persistGroups(this.toListString(cmod));
-		persistidor.createFile(txtNewGroup.getText());
-		txtNewGroup.setText("");
+		
+		  Pattern pat = Pattern.compile("[a-zA-Z0-9-]{1,}");
+		     Matcher mat = pat.matcher(txtNewGroup.getText());
+		     if (mat.matches()) {
+		 		cmod.addElement(txtNewGroup.getText()+".file");
+				persistidor.persistGroups(this.toListString(cmod));
+				persistidor.createFile(txtNewGroup.getText());
+				txtNewGroup.setText("");
+		     } else {
+		         return;
+		     }
 	}
 
 	private ArrayList<String> toListString(DefaultComboBoxModel<String> cmod2) {
