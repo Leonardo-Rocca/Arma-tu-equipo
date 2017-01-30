@@ -1,5 +1,7 @@
 package viewPackage;
 
+import java.awt.Color;
+
 public class GenericForm {
 
 	private GenericForm formAnterior;
@@ -12,4 +14,7 @@ public class GenericForm {
 		this.formAnterior = formAnterior;
 	}
 
+	public Color getColor() {
+		return new Color(0, 190, 0);
+	}
 }

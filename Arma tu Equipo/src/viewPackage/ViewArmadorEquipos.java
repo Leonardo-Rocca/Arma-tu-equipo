@@ -31,6 +31,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
 
 public class ViewArmadorEquipos extends GenericForm{
 
@@ -86,18 +87,21 @@ public class ViewArmadorEquipos extends GenericForm{
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(0, 204, 0));
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 460, 488);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		listaJugadores = new JList(lmodJugadoresTotales);  
+		listaJugadores.setBackground(new Color(255, 255, 204));
 		listaJugadores.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		listaJugadores.setBounds(38, 38, 370, 53);
 		frame.getContentPane().add(listaJugadores);
 		listaJugadores.setVisibleRowCount(2);
 		
 		 listE1 = new JList(jugadoresEq1lmod);
+		 listE1.setBackground(new Color(255, 255, 204));
 		listE1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -110,6 +114,7 @@ public class ViewArmadorEquipos extends GenericForm{
 		frame.getContentPane().add(listE1);
 		
 		listE2 = new JList(jugadoresEq2lmod);
+		listE2.setBackground(new Color(255, 255, 204));
 		listE2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {

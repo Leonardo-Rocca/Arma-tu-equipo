@@ -1,10 +1,12 @@
 package modelo;
+import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
 import persistencia.FileSystem;
 import persistencia.PersistidorGrups;
+import viewPackage.Login;
 
 public class main {
 
@@ -31,10 +33,16 @@ public class main {
 	m2.get(0).imprimirEquipos();
 	}
 	public static void main(String[] args) {
-		FileSystem fs = new FileSystem();
-		ArrayList<String> s = new ArrayList<String>();
-		s.add("persisted-object.file");
-		new PersistidorGrups().inicializar();//.persistGroups(s);
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Login window = new Login();
+					window.main(null);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 	}
 

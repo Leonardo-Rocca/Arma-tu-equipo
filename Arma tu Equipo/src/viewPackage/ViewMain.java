@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class ViewMain extends GenericForm{
 
@@ -44,8 +45,10 @@ public class ViewMain extends GenericForm{
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		Color backColor = this.getColor();
+		frame.getContentPane().setBackground(backColor);
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 406, 359);
+		frame.setBounds(100, 100, 455, 359);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -56,7 +59,7 @@ public class ViewMain extends GenericForm{
 			}
 		});
 		btnCargarJugadores.setFont(new Font("Stencil", Font.PLAIN, 13));
-		btnCargarJugadores.setBounds(83, 54, 228, 78);
+		btnCargarJugadores.setBounds(112, 54, 228, 78);
 		frame.getContentPane().add(btnCargarJugadores);
 		
 		JButton btnGenerarEquipo = new JButton("Generar Equipo");
@@ -66,7 +69,7 @@ public class ViewMain extends GenericForm{
 			}
 		});
 		btnGenerarEquipo.setFont(new Font("Stencil", Font.PLAIN, 13));
-		btnGenerarEquipo.setBounds(83, 169, 228, 78);
+		btnGenerarEquipo.setBounds(112, 169, 228, 78);
 		frame.getContentPane().add(btnGenerarEquipo);
 		
 		JButton btnSetUp = new JButton("");
@@ -76,7 +79,7 @@ public class ViewMain extends GenericForm{
 			}
 		});
 		btnSetUp.setIcon(new ImageIcon("setUpIcon40.png"));
-		btnSetUp.setBounds(110, 270, 42, 39);
+		btnSetUp.setBounds(139, 270, 42, 39);
 		frame.getContentPane().add(btnSetUp);
 	}
 

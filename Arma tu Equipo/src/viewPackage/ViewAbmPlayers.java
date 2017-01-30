@@ -76,7 +76,7 @@ public class ViewAbmPlayers extends GenericForm {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 422, 354);
+		frame.setBounds(100, 100, 449, 354);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		list = new JList(lmod);
@@ -120,7 +120,7 @@ public class ViewAbmPlayers extends GenericForm {
 		txtNombre.setColumns(10);
 		
 		//JList list = new JList();
-		list.setBounds(75, 118, 215, 130);
+		list.setBounds(75, 118, 257, 130);
 		frame.getContentPane().add(list);
 		frame.getContentPane().add(btnAgregar);
 		

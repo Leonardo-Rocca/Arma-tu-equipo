@@ -1,5 +1,6 @@
 package viewPackage;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -169,4 +170,5 @@ public class Configuracion extends GenericForm{
 		}
 		return ls;
 	}
+
 }
