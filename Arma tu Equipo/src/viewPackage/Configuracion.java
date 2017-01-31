@@ -17,7 +17,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.Font;
 
 public class Configuracion extends GenericForm{
 
@@ -60,6 +63,7 @@ public class Configuracion extends GenericForm{
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -80,6 +84,8 @@ public class Configuracion extends GenericForm{
 		frame.getContentPane().add(btnVolver);
 		
 		lblGrupoActual = new JLabel("Grupo actual: ");
+		lblGrupoActual.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblGrupoActual.setForeground(new Color(255, 255, 255));
 		lblGrupoActual.setBounds(24, 27, 265, 20);
 		frame.getContentPane().add(lblGrupoActual);
 		
@@ -119,9 +125,15 @@ public class Configuracion extends GenericForm{
 		lblGrupoActual.setText(lblGrupoActual.getText() + persistidor.getFilePointed());
 		
 		lblIngreseNombreDe = new JLabel("Ingrese nombre de grupo(sin espacios)");
+		lblIngreseNombreDe.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblIngreseNombreDe.setForeground(new Color(255, 255, 255));
 		lblIngreseNombreDe.setBounds(34, 131, 341, 20);
 		frame.getContentPane().add(lblIngreseNombreDe);
+		
+		frame.getContentPane().add(cargarFondo());
 	}
+
+
 
 	protected void cambiarFile() {
 		persistidor.persistFilePointed(cmod.getElementAt(comboBox.getSelectedIndex()));	
@@ -159,6 +171,7 @@ public class Configuracion extends GenericForm{
 				persistidor.createFile(txtNewGroup.getText());
 				txtNewGroup.setText("");
 		     } else {
+		    	 JOptionPane.showMessageDialog(new JPanel(), "Debe ingresar un nombre sin espacios ni caracteres especiales", "Error", JOptionPane.ERROR_MESSAGE);
 		         return;
 		     }
 	}
@@ -170,5 +183,4 @@ public class Configuracion extends GenericForm{
 		}
 		return ls;
 	}
-
 }

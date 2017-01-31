@@ -87,7 +87,7 @@ public class ViewArmadorEquipos extends GenericForm{
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(0, 204, 0));
+		frame.getContentPane().setBackground(new Color(51, 153, 0));
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 460, 488);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -125,16 +125,19 @@ public class ViewArmadorEquipos extends GenericForm{
 		frame.getContentPane().add(listE2);
 		
 		JLabel lblEquipo = new JLabel("Equipo 1");
+		lblEquipo.setForeground(new Color(255, 255, 255));
 		lblEquipo.setFont(new Font("Viner Hand ITC", Font.BOLD, 19));
 		lblEquipo.setBounds(40, 164, 92, 26);
 		frame.getContentPane().add(lblEquipo);
 		
 		JLabel lblEquipo_2 = new JLabel("Equipo 2");
+		lblEquipo_2.setForeground(new Color(255, 255, 255));
 		lblEquipo_2.setFont(new Font("Viner Hand ITC", Font.BOLD, 19));
 		lblEquipo_2.setBounds(320, 164, 92, 26);
 		frame.getContentPane().add(lblEquipo_2);
 		
 		JLabel lblJugadores = new JLabel("Jugadores");
+		lblJugadores.setForeground(new Color(255, 255, 255));
 		lblJugadores.setFont(new Font("Viner Hand ITC", Font.BOLD, 19));
 		lblJugadores.setBounds(188, 11, 92, 26);
 		frame.getContentPane().add(lblJugadores);
@@ -195,10 +198,12 @@ public class ViewArmadorEquipos extends GenericForm{
 		});
 		btnAgregarE2.setBounds(298, 125, 89, 23);
 		frame.getContentPane().add(btnAgregarE2);
+		lbHablility1.setForeground(new Color(255, 255, 255));
 		
 
-		lbHablility1.setBounds(71, 344, 46, 14);
+		lbHablility1.setBounds(86, 344, 46, 14);
 		frame.getContentPane().add(lbHablility1);
+		lbHablility2.setForeground(new Color(255, 255, 255));
 		
 
 		lbHablility2.setBounds(353, 344, 46, 14);
@@ -231,6 +236,7 @@ public class ViewArmadorEquipos extends GenericForm{
 		
 	//	modelo.main.cargarJugadoresFacu().forEach(j ->lmodJugadoresTotales.addElement(j));
 		
+		frame.getContentPane().add(this.cargarFondo2());
 	}
 
 

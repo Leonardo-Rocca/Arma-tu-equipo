@@ -61,9 +61,12 @@ public class Login extends GenericForm {
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("Arma \r\ntu \r\nEquipo");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("SimSun", Font.BOLD, 20));
 		lblNewLabel.setIcon(new ImageIcon("soccer.png"));
 		lblNewLabel.setBounds(0, 0, 424, 256);
 		frame.getContentPane().add(lblNewLabel);
+		
+		frame.getContentPane().add(this.cargarFondo());
 	}
 }

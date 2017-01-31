@@ -23,6 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class ViewPlayerSelection extends GenericForm{
 
@@ -58,6 +59,7 @@ public class ViewPlayerSelection extends GenericForm{
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(this.getColorSecondary());
 		frame.setBounds(100, 100, 451, 451);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);

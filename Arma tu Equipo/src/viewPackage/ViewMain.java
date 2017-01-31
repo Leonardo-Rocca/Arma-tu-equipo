@@ -81,6 +81,8 @@ public class ViewMain extends GenericForm{
 		btnSetUp.setIcon(new ImageIcon("setUpIcon40.png"));
 		btnSetUp.setBounds(139, 270, 42, 39);
 		frame.getContentPane().add(btnSetUp);
+		
+		frame.getContentPane().add(cargarFondo2());
 	}
 
 	protected void irAConfiguracion() {

@@ -168,6 +168,7 @@ public class ViewAbmPlayers extends GenericForm {
 		frame.getContentPane().add(lblSeleccioneJugadorPara);
 		
 		this.setParticipantes(new FileSystem().getListPlayers());
+		frame.getContentPane().setBackground(this.getColorSecondary());
 	}
 
 	protected void persistir() {
