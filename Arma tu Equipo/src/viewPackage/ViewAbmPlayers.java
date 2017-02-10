@@ -169,6 +169,10 @@ public class ViewAbmPlayers extends GenericForm {
 		
 		this.setParticipantes(new FileSystem().getListPlayers());
 		frame.getContentPane().setBackground(this.getColorSecondary());
+		
+		JScrollPane scrollPane = new JScrollPane(list);
+		scrollPane.setBounds(75, 118, 269, 130);
+		frame.getContentPane().add(scrollPane);
 	}
 
 	protected void persistir() {

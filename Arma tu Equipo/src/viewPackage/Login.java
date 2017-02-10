@@ -49,6 +49,15 @@ public class Login extends GenericForm {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		JLabel lblNewLabel = new JLabel("Arma \r\ntu \r\nEquipo");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("SimSun", Font.BOLD, 20));
+		lblNewLabel.setIcon(new ImageIcon("soccer.png"));
+		lblNewLabel.setBounds(0, 0, 424, 256);
+		frame.getContentPane().add(lblNewLabel);
+		
+		frame.getContentPane().add(this.cargarFondo());
+		
 		JButton btnNewButton = new JButton("Ingresar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -59,14 +68,5 @@ public class Login extends GenericForm {
 		btnNewButton.setBounds(136, 201, 288, 38);
 		btnNewButton.setBorderPainted( false );
 		frame.getContentPane().add(btnNewButton);
-		
-		JLabel lblNewLabel = new JLabel("Arma \r\ntu \r\nEquipo");
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("SimSun", Font.BOLD, 20));
-		lblNewLabel.setIcon(new ImageIcon("soccer.png"));
-		lblNewLabel.setBounds(0, 0, 424, 256);
-		frame.getContentPane().add(lblNewLabel);
-		
-		frame.getContentPane().add(this.cargarFondo());
 	}
 }

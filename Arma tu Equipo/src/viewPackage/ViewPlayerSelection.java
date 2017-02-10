@@ -24,6 +24,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import javax.swing.JScrollPane;
 
 public class ViewPlayerSelection extends GenericForm{
 
@@ -78,7 +79,7 @@ public class ViewPlayerSelection extends GenericForm{
 		chkPlayers.setListData(ch);
 		chkPlayers.setBounds(136, 61, 161, 247);
 
-		frame.getContentPane().add(chkPlayers);
+		//frame.getContentPane().add(chkPlayers);
 		
 		JLabel lblSeleccioneLosJugadores = new JLabel("Seleccione los jugadores");
 		lblSeleccioneLosJugadores.setFont(new Font("Stencil", Font.PLAIN, 16));
@@ -141,6 +142,10 @@ public class ViewPlayerSelection extends GenericForm{
 		JLabel lblTodos = new JLabel("Todos");
 		lblTodos.setBounds(329, 194, 91, 21);
 		frame.getContentPane().add(lblTodos);
+		
+		JScrollPane scrollPane = new JScrollPane(chkPlayers);
+		scrollPane.setBounds(136, 62, 161, 246);
+		frame.getContentPane().add(scrollPane);
 
 	}
 
@@ -158,5 +163,4 @@ public class ViewPlayerSelection extends GenericForm{
 		armador.setFormAnterior(this.getFormAnterior());
 		this.frame.dispose();
 	}
-
 }

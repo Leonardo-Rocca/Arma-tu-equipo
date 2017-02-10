@@ -35,6 +35,7 @@ import java.awt.Color;
 import javax.swing.JRadioButton;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import javax.swing.JScrollPane;
 
 public class ViewArmadorEquipos extends GenericForm{
 
@@ -99,9 +100,13 @@ public class ViewArmadorEquipos extends GenericForm{
 		listaJugadores = new JList(lmodJugadoresTotales);  
 		listaJugadores.setBackground(new Color(255, 255, 204));
 		listaJugadores.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		listaJugadores.setBounds(38, 38, 370, 53);
-		frame.getContentPane().add(listaJugadores);
+		listaJugadores.setBounds(40, 61, 370, 53);
+	//	frame.getContentPane().add(listaJugadores);
 		listaJugadores.setVisibleRowCount(2);
+		
+		JScrollPane scrollPane = new JScrollPane(listaJugadores);
+		scrollPane.setBounds(40, 40, 376, 53);
+		frame.getContentPane().add(scrollPane);
 		
 		 listE1 = new JList(jugadoresEq1lmod);
 		 listE1.setBackground(new Color(255, 255, 204));
@@ -251,6 +256,8 @@ public class ViewArmadorEquipos extends GenericForm{
 		});
 		rdbtnPuntajes.setBounds(341, 401, 80, 26);
 		frame.getContentPane().add(rdbtnPuntajes);
+		
+
 	}
 
 
