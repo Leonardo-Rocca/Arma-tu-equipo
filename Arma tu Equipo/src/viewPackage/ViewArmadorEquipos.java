@@ -32,6 +32,9 @@ import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
+import javax.swing.JRadioButton;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class ViewArmadorEquipos extends GenericForm{
 
@@ -237,6 +240,17 @@ public class ViewArmadorEquipos extends GenericForm{
 	//	modelo.main.cargarJugadoresFacu().forEach(j ->lmodJugadoresTotales.addElement(j));
 		
 		frame.getContentPane().add(this.cargarFondo2());
+		
+		JRadioButton rdbtnPuntajes = new JRadioButton("Puntajes");
+		rdbtnPuntajes.setSelected(true);
+		rdbtnPuntajes.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				changePoints();	
+			}
+		});
+		rdbtnPuntajes.setBounds(341, 401, 80, 26);
+		frame.getContentPane().add(rdbtnPuntajes);
 	}
 
 
@@ -292,4 +306,20 @@ public class ViewArmadorEquipos extends GenericForm{
 		
 	}
 
+	private void changePoints() {
+		changeList(jugadoresEq1lmod);
+		changeList(jugadoresEq2lmod);
+		changeList(lmodJugadoresTotales);
+	}
+
+	private void changeList(DefaultListModel<Jugador> listToChange) {
+		int size = listToChange.size();
+		
+		for(int i = 0;i<size;i++){
+			 Jugador j = listToChange.getElementAt(0);
+			j.changeDescription();
+			listToChange.remove(0);
+			listToChange.addElement(j);
+			}
+	}
 }
