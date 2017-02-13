@@ -21,6 +21,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Configuracion extends GenericForm{
 
@@ -33,6 +35,8 @@ public class Configuracion extends GenericForm{
 	private JTextField txtNewGroup;
 	private JButton button;
 	private JLabel lblIngreseNombreDe;
+	private JLabel lbInformation;
+	private JLabel lblFondoinfo;
 
 	/**
 	 * Launch the application.
@@ -69,6 +73,24 @@ public class Configuracion extends GenericForm{
 		frame.getContentPane().setLayout(null);
 		
 		cmod = new DefaultComboBoxModel<String>(this.toArrayString((persistidor.getGroups())));
+				
+				lblFondoinfo = new JLabel("");
+				lblFondoinfo.setBounds(80, 11, 223, 232);
+				lblFondoinfo.setIcon(new ImageIcon("imagenes\\cesped3.jpg"));
+				lblFondoinfo.setVisible(false);
+				
+				//lbInformation = this.cargarFondo2();// new JLabel("Creado por Leonardo Rocca\r\nParticipaci\u00F3n de Eric K.");
+				lbInformation =new JLabel("Creado por Leonardo Rocca");
+				lbInformation.setForeground(Color.WHITE);
+				lbInformation.setFont(new Font("Tahoma", Font.BOLD, 11));
+				//	lbInformation.setText("Creado por Leonardo Rocca\r\nParticipaci\u00F3n de Eric K.");
+					
+
+				lbInformation.setBounds(110, 83, 182, 51);
+				lbInformation.setVisible(false);
+				frame.getContentPane().add(lbInformation);
+				frame.getContentPane().add(lblFondoinfo);
+				
 		comboBox = new JComboBox(cmod);
 		comboBox.setBounds(34, 67, 208, 20);
 		frame.getContentPane().add(comboBox);
@@ -129,8 +151,28 @@ public class Configuracion extends GenericForm{
 		lblIngreseNombreDe.setForeground(new Color(255, 255, 255));
 		lblIngreseNombreDe.setBounds(34, 131, 341, 20);
 		frame.getContentPane().add(lblIngreseNombreDe);
+
 		
+		JLabel lblInfo = new JLabel("");
+		lblInfo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+			    lbInformation.setVisible(true);
+				lblFondoinfo.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				   lbInformation.setVisible(false);
+				lblFondoinfo.setVisible(false);
+			}
+		});
+		lblInfo.setIcon(new ImageIcon(Configuracion.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Justify-White@2x.png")));
+		lblInfo.setBounds(345, 209, 46, 45);
+		frame.getContentPane().add(lblInfo);
 		frame.getContentPane().add(cargarFondo());
+		
+
+		
 	}
 
 
