@@ -31,8 +31,6 @@ public class PlayerController {
 			
 			    String nombre = request.queryParams("nombre");	
 				int habilidad = Integer.parseInt(request.queryParams("habilidad"));
-			 
-			 	
 				FileSystem.persistPlayer(new Jugador(nombre, habilidad));
 			    response.redirect("/jugadores");
 			    return null;
@@ -47,6 +45,18 @@ public class PlayerController {
 			FileSystem.persistListPlayers(aux);
 			response.redirect("/jugadores");
 		    return null;
+		  }
+		
+		
+		//---no anda el archivo
+		public ModelAndView editar(Request request, Response response) {
+		    String nombre = request.params(":name");	
+		    String habilidad = request.params(":hability");	
+			  
+		    HashMap<String, Object> viewModel = new HashMap<>();
+		    viewModel.put("name",nombre);  
+		    viewModel.put("hability",habilidad);  
+		 return new ModelAndView(viewModel,"jugador.hbs");
 		  }
 
 		

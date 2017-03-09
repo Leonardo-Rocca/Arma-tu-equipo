@@ -32,6 +32,8 @@ public class Routes {
     get("/jugadores",players::listarJugadores,engine);
     post("/jugadores", players::crear);
     get("/jugadores/eliminar/:name", players::eliminar);
+    get("/jugador/:name/:hability", players::editar);
+    
   /*  get("/login", login::loguear, engine);
     get("/consultaReceta",consulta::consultar,engine);
     get("/receta/:id", recetas::mostrar, engine);
