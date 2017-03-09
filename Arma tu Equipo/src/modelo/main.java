@@ -7,6 +7,7 @@ import java.util.Comparator;
 import persistencia.FileSystem;
 import persistencia.PersistidorGrups;
 import viewPackage.Login;
+import web.ServerControler;
 
 public class main {
 
@@ -17,7 +18,7 @@ public class main {
 	static Jugador edu = new Jugador("Edu",7);
 	static Jugador juanjo = new Jugador("Juanjo",10);
 	
-	public static void main2(String[] args) {
+	public static void main(String[] args) {
 		ArmadorEquipos armador = new ArmadorEquipos();
 		ArrayList<Jugador> jugadores = cargarJugadores3();
 		ArrayList<Jugador> elTridente = cargarJugadoresTridente();
@@ -29,10 +30,14 @@ public class main {
 	
 	System.out.printf("\nEl clásico \n");
 	ArrayList<Match> m2 = armador.armarEquipoConJugadores(jugadores,new ArrayList<Jugador>(),new ArrayList<Jugador>());
-	ArrayList<Match> m3 = armador.armarEquipoConJugadores(jugadores,elTridente);
+	//ArrayList<Match> m3 = armador.armarEquipoConJugadores(jugadores,elTridente);
 	m2.get(0).imprimirEquipos();
+	
+	String[] args1 =new String[10] ;
+	args[0]= "asd";
+	new ServerControler(args1);
 	}
-	public static void main(String[] args) {
+	public static void main1(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

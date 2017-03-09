@@ -76,7 +76,7 @@ public ArrayList<Match> armarEquipoConJugadores(ArrayList<Jugador> jugadores, Ar
 	return matcheos;
 }
 
-public ArrayList<Match> armarEquipoConJugadores(ArrayList<Jugador> jugadores, ArrayList<Jugador> jugadoresEquipo) {
+private ArrayList<Match> armarEquipoConJugadores(ArrayList<Jugador> jugadores, ArrayList<Jugador> jugadoresEquipo) {
 	return this.armarEquipoConJugadores(jugadores, jugadoresEquipo,new ArrayList<Jugador>());
 }	
 	
@@ -98,6 +98,16 @@ private ArrayList<Equipo> armarCombinacionesEquipos(ArrayList<Jugador> jugadores
 	}
 	
 	return es1;
+}
+
+public ArrayList<Match> armarEquipoConJugadoresPendientes(ArrayList<Jugador> jugadoresPendientes,
+		ArrayList<Jugador> jugadoresE1, ArrayList<Jugador> jugadoresE2) {
+	ArrayList<Jugador> jugadoresTot = new ArrayList<Jugador>();
+	jugadoresTot.addAll(jugadoresPendientes);
+	jugadoresTot.addAll(jugadoresE1);
+	jugadoresTot.addAll(jugadoresE2);
+	
+	return this.armarEquipoConJugadores(jugadoresTot, jugadoresE1, jugadoresE2);
 }
 
 

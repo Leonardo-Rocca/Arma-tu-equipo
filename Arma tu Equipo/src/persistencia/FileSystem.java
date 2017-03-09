@@ -40,21 +40,10 @@ public class FileSystem {
 
 
 	public static void persistPlayer(Jugador object1) {
-		// Serialización de Objeto 
-        try {
-            //crea el objecto e imprime sus valores por consola
-            System.out.println("object1: " + object1);
-            //crea un fichero para persistir el objeto
-            FileOutputStream fos = new FileOutputStream("persisted-object.file");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            //escribe el objeto serializado a un archivo
-            oos.writeObject(object1);
-            oos.flush();
-            oos.close();
-        } catch (Exception e) {
-            System.out.println("Exception during serialization: " + e);
-            System.exit(0);
-        }
+		FileSystem f = new FileSystem();
+		ArrayList<Jugador> l = f.getListPlayers();
+		l.add(object1);
+		f.persistListPlayers(l);
 	}
 
     	public static void persistListPlayers(ArrayList<Jugador> object1) {
