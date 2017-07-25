@@ -1,0 +1,76 @@
+{{# partial "titulo" }}	
+	<title>Generar</title>
+{{/partial}}
+		
+{{# partial "contenido" }}	  
+<div>
+<!--	<img src="fondo.jpg">
+-->
+  <h1 class = "text-center">Generar</h1>
+</div>	
+
+<div class="row">
+	<div class="col-md-12">	
+	<table  align="center" class="table table-striped" cellpadding="1" >
+			<td class = "text-center"><b>Ir a equipo 1</b></td>			
+			<td class = "text-center"><b>Nombre</b></td>
+			<td class = "text-center"><b>Habilidad</b></td>
+			<td class = "text-center"><b>Ir a equipo 2</b></td>
+		</hr>
+	{{#jugadores}}
+		<tr>
+			<td class = "text-center"><a class="btn btn-info" href="/generar/{{name}}/1"><span class="glyphicon glyphicon-chevron-left"></span> </a></td>
+			<td class = "text-center"><a class="btn btn-default-lg" href="/jugador/{{name}}/{{hability}}">{{name}}</a></td>
+			<td class = "text-center"><a class="btn btn-default-lg" href="/generar/{{name}}">{{hability}}</a></td>
+			<td class = "text-center"><a class="btn btn-info" href="/generar/{{name}}/2"><span class="glyphicon glyphicon-chevron-right"></span> </a></td>
+		</tr>
+	{{/jugadores}}				
+	</table>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">	
+
+  	<h3 class = "text-center">Equipo 1</h3>	
+		<p class = "text-center">{{hability1}}</p>	
+
+	<table class="table table-striped" >
+			<td class = "text-center"><b>Nombre</b></td>
+			<td class = "text-center"><b>Habilidad</b></td>
+		</hr>
+	{{#jugadoresIzq}}
+		<tr>
+			<td class = "text-center"><a class="btn btn-default" href="/generar/{{name}}/0">{{name}}</a></td>
+			<td class = "text-center">{{hability}}</td>
+		</tr>
+	{{/jugadoresIzq}}				
+	</table>
+	</div>
+
+
+	<div class="col-md-6">	
+	<h3 class = "text-center">Equipo 2</h3>	
+	<p class = "text-center">{{hability2}}</p>	
+
+	<table class="table table-striped" >
+			<td class = "text-center"><b>Nombre</b></td>
+			<td class = "text-center"><b>Habilidad</b></td>
+		</hr>
+	{{#jugadoresDer}}
+		<tr>
+			<td class = "text-center"><a class="btn btn-default" href="/receta/{{name}}">{{name}}</a></td>
+
+			<td class = "text-center">{{hability}}</td>
+		</tr>
+	{{/jugadoresDer}}				
+	</table>
+	</div>
+</div>
+	<div class="text-center">
+  	<a class="btn btn-primary"   href="/generar/generate">Generar <span class="glyphicon glyphicon-fire"></span>  </a>
+	</div>
+
+
+{{/partial}}
+
+{{> layout.hbs }}

@@ -1,0 +1,129 @@
+{{# partial "titulo" }}	
+	<title>Generar</title>
+{{/partial}}
+		
+{{# partial "contenido" }}	  
+
+<style>
+#div1 {
+    width: 350px;
+    height: 150px;
+    padding: 7px;
+    border: 1px solid #aaaaaa;
+}
+</style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+  
+
+<div>
+<!--	<img src="fondo.jpg">
+-->
+  <h1 class = "text-center">Generar</h1>
+</div>	
+
+<div class="row">
+	<div class="col-sm-4">	 <h3 class = "text-center">E1</h3>
+		<ol id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+		</ol>
+	</div>
+
+<div class="col-sm-4">	
+ <h3 class = "text-center">Jugadores</h3>
+	{{#jugadores}}		
+		<ul>
+			<li id={{name}} draggable="true" ondragstart="drag(event)"> {{name}} - {{hability}}</li>
+
+		</ul>
+	{{/jugadores}}	
+	</div>
+
+	<div class="col-sm-4">	 <h3 class = "text-center">E2</h3>
+		<ul>
+		<li><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div> </li>
+
+		</ul>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">	
+	<table  align="center" class="table table-striped" cellpadding="1" >
+			<td class = "text-center"><b>Ir a equipo 1</b></td>			
+			<td class = "text-center"><b>Nombre</b></td>
+			<td class = "text-center"><b>Habilidad</b></td>
+			<td class = "text-center"><b>Ir a equipo 2</b></td>
+		</hr>
+	{{#jugadores}}
+		<tr>
+			<td class = "text-center"><a class="btn btn-info" href="/generar/{{name}}/1"><span class="glyphicon glyphicon-chevron-left"></span> </a></td>
+			<td class = "text-center"><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">{{name}}</div> </td>
+			<td class = "text-center"><a class="btn btn-default-lg" href="/generar/{{name}}">{{hability}}</a></td>
+			<td class = "text-center"><a class="btn btn-info" href="/generar/{{name}}/2"><span class="glyphicon glyphicon-chevron-right"></span> </a></td>
+		</tr>
+	{{/jugadores}}				
+	</table>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">	
+
+  	<h3 class = "text-center">Equipo 1</h3>	
+		<p class = "text-center">{{hability1}}</p>	
+
+	<table class="table table-striped" >
+			<td class = "text-center"><b>Nombre</b></td>
+			<td class = "text-center"><b>Habilidad</b></td>
+		</hr>
+	{{#jugadoresIzq}}
+		<tr>
+			<td class = "text-center"><a class="btn btn-default" href="/generar/{{name}}/0">{{name}}</a></td>
+			<td class = "text-center">{{hability}}</td>
+		</tr>
+	{{/jugadoresIzq}}				
+	</table>
+	</div>
+
+
+	<div class="col-md-6">	
+	<h3 class = "text-center">Equipo 2</h3>	
+	<p class = "text-center">{{hability2}}</p>	
+
+	<table class="table table-striped" >
+			<td class = "text-center"><b>Nombre</b></td>
+			<td class = "text-center"><b>Habilidad</b></td>
+		</hr>
+	{{#jugadoresDer}}
+		<tr>
+			<td class = "text-center"><a class="btn btn-default" href="/receta/{{name}}">{{name}}</a></td>
+
+			<td class = "text-center">{{hability}}</td>
+		</tr>
+	{{/jugadoresDer}}				
+	</table>
+	</div>
+</div>
+	<div class="text-center">
+  	<a class="btn btn-primary"   href="/generar/generate">Generar <span class="glyphicon glyphicon-fire"></span>  </a>
+	</div>
+<p>Drag the W3Schools image into the rectangle:</p>
+
+
+<br>
+
+{{/partial}}
+
+{{> layout.hbs }}

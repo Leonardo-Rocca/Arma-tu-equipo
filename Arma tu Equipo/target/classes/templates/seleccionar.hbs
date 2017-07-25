@@ -1,0 +1,55 @@
+{{# partial "titulo" }}	
+	<title>Generar</title>
+{{/partial}}
+		
+{{# partial "contenido" }}	
+
+
+<div>
+<!--	<img src="fondo.jpg">
+-->
+  <h1 class = "text-center">Generar</h1>
+</div>	
+
+
+<form class="form-signin">
+    				  <div class = "pull-right">
+
+         				   <input type="checkbox" value="remember-me" >Todos juegan </br>
+
+       				 </div>
+
+<div class="row">
+	<div class="col-md-12">	
+	<table  align="center" class="table table-striped" cellpadding="1" >		
+			<td class = "text-center"><b>Nombre - Habilidad</b></td>
+			<td ><b>Juega</b></td>
+		</hr>
+	{{#jugadores}}
+		<tr>
+
+			<td class = "text-center"><input type="text" name="firstname" value="{{name}} - {{hability}}" disabled></td>
+			<td >
+      				  <div class="checkbox">
+
+         				   <input type="checkbox" value="remember-me">
+
+       				 </div>
+<!--<a class="btn btn-info" href="/generar/{{name}}/2"><span class="glyphicon glyphicon-chevron-right"></span> </a>-->
+			</td>
+		</tr>
+	{{/jugadores}}				
+	</table>
+	</div>
+</div>
+    
+<button class="btn btn-lg btn-primary btn-block" type="submit">Vamos a jugar <span class="glyphicon glyphicon-fire"></span></button>
+	</br>
+  
+
+</form>
+
+
+{{/partial}}
+
+{{> layout.hbs }}

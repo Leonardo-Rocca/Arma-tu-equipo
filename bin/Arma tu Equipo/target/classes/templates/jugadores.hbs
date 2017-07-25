@@ -1,0 +1,31 @@
+{{# partial "titulo" }}	
+	<title>Recetassasa</title>
+{{/partial}}
+		
+{{# partial "contenido" }}	  
+<div>
+  <h1 class = "text-center">Recetas</h1>	
+</div>	
+
+<div class="row">
+	<div class="col-md-12">	
+	<table class="table table-striped" >
+			<td><b>Nombre</b></td>
+			<td><b>Habilidad</b></td>
+		</hr>
+	{{#jugadores}}
+		<tr>
+			<td><a class="btn btn-default" href="/receta/{{name}}">{{name}}</a></td>
+		<td><a class="btn btn-default" href="/receta/{{name}}">{{hability}}</a></td>
+		</tr>
+	{{/jugadores}}				
+	</table>
+	</div>
+	<div class="pull-right">
+  <a class="btn btn-primary"   href="/recetas/new">Nueva Receta</a>
+</div>
+</div>
+
+{{/partial}}
+
+{{> layout.hbs }}

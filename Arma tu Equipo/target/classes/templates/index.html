@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+
+<style>
+.bg-1 { 
+    background-color: #1abc9c; /* Green */
+    color: #ffffff;
+}
+.bg-4 { 
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+body {
+    font: 20px "Montserrat", sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+}
+
+p {font-size: 16px;}
+.margin {margin-bottom: 45px;}
+.button4 {border-radius: 12px;}
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+</style>
+
+
+
+<html lang="en">
+<head>
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+  <title>Hay equipo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+ <div class="container-fluid bg-1 text-center">
+  <h1>Hay equipo?</h1>
+  <img src="soccer.png" class="img-circle" alt="Ball">
+  <h3>Si</h3>
+</div>
+<div class="container-fluid bg-2 text-center"> 
+
+  <h3>Jugadores</h3>
+ 
+
+<table align="center" border="1" cellpadding="5" cellspacing="1" style="width: 100%;">
+	<thead>
+		<tr>
+			<th scope="row">
+				Nombre</th>
+			<th scope="col">
+				Habilidad</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">Leo
+				 </th>
+			<td>10
+				 </td>
+		</tr>
+		<tr>
+			<th scope="row">Eric
+				 </th>
+			<td>5
+				 </td>
+		</tr>
+	</tbody>
+</table>
+
+
+ <div class="row">
+    <div class="col-sm-4">
+      <p>Equipo 1</p>
+<table align="center" border="1" cellpadding="10" cellspacing="1" style="width: 100%;">
+	<tbody>
+		<tr>
+			<th scope="row">Facu
+				 </th>
+			<td>9
+				 </td>
+		</tr>
+		<tr>
+			<th scope="row">Cris
+				 </th>
+			<td>4
+				 </td>
+		</tr>
+	</tbody>
+     </table>
+
+    </div>
+
+
+    <div class="col-sm-3">
+      <p></p>
+	</div>
+
+    <div class="col-sm-4">
+      <p>Equipo 2</p>
+<p><button class="button4">Agregar</button></p>
+
+<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 100%;">
+	<tbody>
+		<tr>
+			<th>Titos
+				 </th>
+			<td>6
+				 </td>
+		</tr>
+		<tr>
+			<th scope="row">Mago
+				 </th>
+			<td>1
+				 </td>
+		</tr>
+	</tbody>
+</table> 
+ </div>
+</div>
+ <p>
+<div class="input-group-btn">
+        <button type="button" class="btn btn-danger">Generar equipo</button>
+      </div>
+ </p>
+
+
+
+ <!-- esta de mas -->
+<div class="jumbotron text-center">
+  <h1>Company</h1> 
+  <form class="form-inline">
+    <div class="input-group">
+      <input type="email" class="form-control" size="50" placeholder="Email Address" required>
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default btn-lg">Subscribe</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+ <!-- PARTE 2 --> <p>VERSION 2 </p>
+
+<p id="selected"> seleccionado</p>
+
+<script>
+var idjugador = '1';
+
+function myFunction(p1) {
+document.getElementById('selected').innerHTML = idjugador;
+return p1
+}
+
+
+var car = {name:"Fiat", hability:"500"};
+document.getElementById("selected").innerHTML = idjugador;
+
+
+var j = {name:"Jugador 1", hability:"500"}
+
+</script>
+
+	<div class="jumbotron text-center">
+      <p>JUGADORES</p>    
+        <ul>
+            <li id="elemt1" > <button type="button"
+	onclick="idjugador = 'elemt1'">Jugador 1  </button></li>
+            <li>List item 1</li>
+            <li>List item 1</li>
+            <li>List item 1</li>
+            <li>List item 1</li>
+        </ul>
+
+    </div>
+
+
+<div class="row">
+    <div class="col-sm-4">
+      <p>Equipo 1</p>    
+<p><button class="button4" onclick="myfunction('el11');"> Agregar</button></p>
+
+        <ul style="list-style-type:disc">
+            <li id="el11">List item 1</li>
+            <li>List item 1</li>
+            <li>List item 1</li>
+            <li id="demo"> </li>
+ <li> <button type="button"
+onclick="document.getElementById(idjugador).innerHTML = Date()">
+Click me to display Date and Time.</button></li>
+
+        </ul>
+
+    </div>
+
+<div class="row">
+    <div class="col-sm-4">
+    </div>
+
+<div class="row">
+    <div class="col-sm-4">
+      <p>Equipo 2</p>   
+<p><button class="button4">Agregar</button></p> 
+        <ul style="list-style-type:disc">
+            <li>List item 1</li>
+            <li>List item 1</li>
+
+        </ul>
+
+    </div>
+</div>
+</body>
+
+<footer class="container-fluid bg-4 text-center">
+  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com">www.w3schools.com</a> <br />
+©Leo</p> 
+</footer>
+</html>

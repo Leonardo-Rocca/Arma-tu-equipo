@@ -1,4 +1,5 @@
 package modelo;
+
 import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.Collections;

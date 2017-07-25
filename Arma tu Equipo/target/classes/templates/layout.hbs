@@ -1,0 +1,68 @@
+﻿<style>
+.bg-1 { 
+    background-color: #1abc9c; /* Green */
+    color: #ffffff;
+}
+.bg-4 { 
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+body {
+    font: 20px "Montserrat", sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+}
+
+p {font-size: 16px;}
+.margin {margin-bottom: 45px;}
+.button4 {border-radius: 12px;}
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+</style>
+
+
+<html>
+  <head>
+    {{# block "titulo" }}
+    {{/block}}
+      </head>
+  <body>
+
+  <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet"  href="main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand"href="/">¿Qué jugamos?</a>
+      </div>
+      <div class>
+        <ul class="nav navbar-nav">
+          <li><a href="/generar">Generar Equipo</a></li>
+ 	
+	 <li><a href="/jugadores">Jugadores</a></li>
+        </ul>
+      </div>
+      <div class = "pull-right">
+        <ul class="nav navbar-nav">
+          <li><a href="/perfil.hbs"><i class="fa fa-user"></i> Perfil</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+  {{# block "contenido" }}
+  {{/block}}
+  </div>
+  
+ <p >    </p>
+ <!-- <footer class="footer" bg-4> -->
+<footer class="container-fluid bg-4 text-center">
+    <p class="text-center">
+      &copy; Leo - 2017
+    </p>
+  </footer>
+  </body>
+</html>
